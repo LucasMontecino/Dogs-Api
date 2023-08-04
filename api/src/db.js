@@ -11,7 +11,7 @@ const {
   DB_CONNECTION_STRING,
 } = process.env;
 // postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}
-const sequelize = new Sequelize(`${DB_CONNECTION_STRING}`, {
+const sequelize = new Sequelize(DB_CONNECTION_STRING, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 });
