@@ -31,6 +31,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         dogs: action.payload,
+        isLoading: false,
       };
 
     case "GET_TEMPERAMENTS":

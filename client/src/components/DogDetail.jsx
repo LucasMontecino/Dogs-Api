@@ -27,6 +27,7 @@ export default function DogDetail(props) {
           height={"350px"}
           width={"350px"}
         />
+        <p className={style.text_loading}>Loading...</p>
       </div>
     );
   }

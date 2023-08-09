@@ -69,6 +69,11 @@ export default function Home() {
     setCurrentPage(1);
   };
 
+  const handleButton = () => {
+    dispatch(getDogs());
+    dispatch(getTemperaments());
+  };
+
   if (isLoading) {
     return (
       <div className={style.box_loading}>
@@ -78,6 +83,7 @@ export default function Home() {
           height={"350px"}
           width={"350px"}
         />
+        <p className={style.text_loading}>Loading...</p>
       </div>
     );
   }
@@ -134,8 +140,12 @@ export default function Home() {
             </select>
           </div>
         </div>
-
+        {/* <div className={style.header_right}>
+        </div> */}
         <div className={style.header_right}>
+          <button className={style.create_dog} onClick={handleButton}>
+            Home
+          </button>
           <Link to="/dog">
             <button className={style.create_dog}>Create New Dog</button>
           </Link>
@@ -146,7 +156,6 @@ export default function Home() {
         <div className={style.container_cards}>
           {currentDogs &&
             currentDogs.map((el) => {
-              // console.log(currentDogs);
               return (
                 <div className={style.container_card} key={el.id}>
                   <Link to={"/home/" + el.id}>

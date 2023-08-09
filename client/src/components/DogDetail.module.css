@@ -91,8 +91,15 @@ button {
 
 .box_loading {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
+}
 
+.text_loading {
+    font-size: 100%;
+    font-weight: bold;
+    color: antiquewhite;
+    margin-top: 20px;
 }

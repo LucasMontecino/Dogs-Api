@@ -67,7 +67,10 @@ button {
 }
 
 .header_right {
-    margin: 0.5rem 6%;
+    display: flex;
+    flex-direction: column;
+    gap: 19.5px;
+    margin: 0.5rem 9%;
 }
 
 .button_reload {
@@ -87,25 +90,29 @@ button {
 }
 
 .create_dog {
+    box-sizing: border-box;
     width: 100%;
     max-width: 370px;
     font-size: 0.9rem;
     background-color: antiquewhite;
     margin-right: 15px;
     color: #2f4f42;
-    padding: 0.6rem 0.6rem;
+    padding: 0.49rem 0.4rem;
     border-radius: 10px;
     z-index: 100;
     text-shadow: 0 0 3px #ccc;
-    transition-duration: 0.5s;
-
+    transition-duration: 0.1s;
     box-shadow: 5px 3px 5px 0.5px rgba(204, 204, 204, 0.6);
+    border: 2px solid antiquewhite;
 }
 
 .create_dog:hover {
+    box-sizing: border-box;
     background-color: rgba(204, 204, 204, 0.615);
     color: antiquewhite;
-    border: 1px solid antiquewhite;
+    border-color: antiquewhite;
+    border-style: solid;
+    border-width: 2px;
 }
 
 .main_container {
@@ -155,7 +162,15 @@ button {
 
 .box_loading {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
+}
+
+.text_loading {
+    font-size: 100%;
+    font-weight: bold;
+    color: antiquewhite;
+    margin-top: 20px;
 }

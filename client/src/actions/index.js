@@ -17,6 +17,7 @@ export function getDogs() {
 
 export function getDogsName(name) {
   return async function (dispatch) {
+    dispatch(getRecipesStart());
     try {
       var json = await axios.get("/dogs?name=" + name);
       return dispatch({
