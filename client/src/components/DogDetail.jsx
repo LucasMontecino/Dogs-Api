@@ -16,6 +16,20 @@ export default function DogDetail(props) {
   }, [dispatch, props.match.params.id]);
 
   const details = useSelector((state) => state.detail);
+  const isLoading = useSelector((state) => state.isLoading);
+
+  if (isLoading) {
+    return (
+      <div className={style.box_loading}>
+        <ReactLoading
+          type={"spin"}
+          color={"#fff"}
+          height={"350px"}
+          width={"350px"}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className={style.main_container}>
@@ -24,7 +38,7 @@ export default function DogDetail(props) {
           <button className={style.button_home}>Home</button>
         </Link>
       </div>
-      {details ? (
+      {details && (
         <div className={style.sub_container}>
           <div className={style.container_elements}>
             <div className={style.image_container}>
@@ -53,15 +67,6 @@ export default function DogDetail(props) {
               </div>
             </div>
           </div>
-        </div>
-      ) : (
-        <div className={style.box_loading}>
-          <ReactLoading
-            type={"spin"}
-            color={"#fff"}
-            height={"1000"}
-            width={"1000"}
-          />
         </div>
       )}
     </div>

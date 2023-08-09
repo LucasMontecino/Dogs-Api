@@ -21,6 +21,7 @@ export default function Home() {
   // este es el arreglo del estado con todos los perros OBVIAMENTE!!!
   const allDogs = useSelector((state) => state.dogs);
   const allTemperaments = useSelector((state) => state.temperaments);
+  const isLoading = useSelector((state) => state.isLoading);
 
   const [order, setOrder] = useState("");
 
@@ -67,6 +68,19 @@ export default function Home() {
     dispatch(filterCreated(e.target.value));
     setCurrentPage(1);
   };
+
+  if (isLoading) {
+    return (
+      <div className={style.box_loading}>
+        <ReactLoading
+          type={"spin"}
+          color={"#fff"}
+          height={"350px"}
+          width={"350px"}
+        />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -130,7 +144,7 @@ export default function Home() {
       <hr />
       <div className={style.main_container}>
         <div className={style.container_cards}>
-          {currentDogs ? (
+          {currentDogs &&
             currentDogs.map((el) => {
               // console.log(currentDogs);
               return (
@@ -150,17 +164,7 @@ export default function Home() {
                   </Link>
                 </div>
               );
-            })
-          ) : (
-            <div className={style.box_loading}>
-              <ReactLoading
-                type={"spin"}
-                color={"#fff"}
-                height={"1000"}
-                width={"1000"}
-              />
-            </div>
-          )}
+            })}
         </div>
         <div className={style.paginate}>
           <Paginate

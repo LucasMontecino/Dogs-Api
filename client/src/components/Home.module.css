@@ -154,8 +154,8 @@ button {
 }
 
 .box_loading {
-    box-sizing: border-box;
-    width: 350px;
-    height: 350px;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
