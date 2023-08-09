@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDogDetail } from "../actions";
 import style from "./DogDetail.module.css";
+import ReactLoading from "react-loading";
 
 export default function DogDetail(props) {
   const dispatch = useDispatch();
@@ -18,11 +19,13 @@ export default function DogDetail(props) {
 
   return (
     <div className={style.main_container}>
-      <Link to="/home">
-        <button className={style.button_home}>Home</button>
-      </Link>
-      <div className={style.sub_container}>
-        {details ? (
+      <div className={style.button_container}>
+        <Link to="/home">
+          <button className={style.button_home}>Home</button>
+        </Link>
+      </div>
+      {details ? (
+        <div className={style.sub_container}>
           <div className={style.container_elements}>
             <div className={style.image_container}>
               <img src={details.image} alt="img not found" />
@@ -50,10 +53,17 @@ export default function DogDetail(props) {
               </div>
             </div>
           </div>
-        ) : (
-          <p>Loading...</p>
-        )}
-      </div>
+        </div>
+      ) : (
+        <div className={style.box_loading}>
+          <ReactLoading
+            type={"spin"}
+            color={"#fff"}
+            height={"1000"}
+            width={"1000"}
+          />
+        </div>
+      )}
     </div>
   );
 }
