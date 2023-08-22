@@ -26,7 +26,9 @@ const getDogsApi = async () => {
       weight: weightArray ? weightArray : "weight doesnt exist",
       temperaments: tempArray ? tempArray : "temp doesnt exist",
       life_span: dog.life_span ? dog.life_span : "life_span doesnt exist",
-      image: dog.image.url ? dog.image.url : "image not found",
+      image: dog.reference_image_id
+        ? dog.reference_image_id
+        : "image not found",
     };
   });
   return apiInfo;
