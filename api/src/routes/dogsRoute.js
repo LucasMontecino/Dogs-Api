@@ -1,6 +1,6 @@
 const express = require("express");
 const dogsRoute = express.Router();
-const { getDogs } = require("../controllers/getDogs");
+const getDogs = require("../controllers/getDogs");
 
 dogsRoute.get("/", async (req, res) => {
   let { name } = req.query;

@@ -3,15 +3,6 @@ const { Dog, Temperament } = require("../db");
 const apiKey =
   "live_PQABFoa3dOATTWeu88Ff60pEhDkYqFLjJJamzt5RQMIJSlyutrpdfOheuumTqrHo";
 
-const getDogsImages = async () => {
-  const apiUrl = await axios.get(
-    `https://api.thedogapi.com/v1/images/?limit=10&page=0&order=DESC`
-  );
-  const apiInfo = apiUrl.data;
-  console.log(apiInfo);
-  return apiInfo;
-};
-
 const getDogsApi = async () => {
   const apiUrl = await axios.get(
     `https://api.thedogapi.com/v1/breeds?api_key=${apiKey}`
@@ -66,4 +57,4 @@ const getDogs = async () => {
   return infoTotal;
 };
 
-module.exports = { getDogs, getDogsImages };
+module.exports = getDogs;
