@@ -3,6 +3,15 @@ const { Dog, Temperament } = require("../db");
 const apiKey =
   "live_PQABFoa3dOATTWeu88Ff60pEhDkYqFLjJJamzt5RQMIJSlyutrpdfOheuumTqrHo";
 
+const getDogsImages = async () => {
+  const apiUrl = await axios.get(
+    `https://api.thedogapi.com/v1/images/?limit=10&page=0&order=DESC`
+  );
+  const apiInfo = apiUrl.data;
+  console.log(apiInfo);
+  return apiInfo;
+};
+
 const getDogsApi = async () => {
   const apiUrl = await axios.get(
     `https://api.thedogapi.com/v1/breeds?api_key=${apiKey}`
@@ -30,7 +39,9 @@ const getDogsApi = async () => {
       weight: weightArray ? weightArray : "weight doesnt exist",
       temperaments: tempArray ? tempArray : "temp doesnt exist",
       life_span: dog.life_span ? dog.life_span : "life_span doesnt exist",
-      image: dogImage ? dogImage : "image not found",
+      image: dog.reference_image_id
+        ? dog.reference_image_id
+        : "image not found",
     };
   });
   return apiInfo;
@@ -55,4 +66,4 @@ const getDogs = async () => {
   return infoTotal;
 };
 
-module.exports = getDogs;
+module.exports = { getDogs, getDogsImages };
