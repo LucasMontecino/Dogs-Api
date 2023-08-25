@@ -46,11 +46,6 @@ export default function Home() {
     setCurrentPage(1);
   };
 
-  // const handleClick = (e) => {
-  //     e.preventDefault();
-  //     dispatch(getDogs());
-  // };
-
   const handleSort = (e) => {
     e.preventDefault();
     dispatch(orderByName(e.target.value));
@@ -72,6 +67,7 @@ export default function Home() {
   const handleButton = () => {
     dispatch(getDogs());
     dispatch(getTemperaments());
+    setCurrentPage(1);
   };
 
   if (isLoading) {
@@ -144,7 +140,7 @@ export default function Home() {
         </div> */}
         <div className={style.header_right}>
           <button className={style.create_dog} onClick={handleButton}>
-            Home
+            Reset Filters
           </button>
           <Link to="/dog">
             <button className={style.create_dog}>Create New Dog</button>

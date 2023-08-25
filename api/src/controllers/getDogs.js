@@ -1,8 +1,12 @@
 const axios = require("axios");
 const { Dog, Temperament } = require("../db");
+const apiKey =
+  "live_PQABFoa3dOATTWeu88Ff60pEhDkYqFLjJJamzt5RQMIJSlyutrpdfOheuumTqrHo";
 
 const getDogsApi = async () => {
-  const apiUrl = await axios.get("https://api.thedogapi.com/v1/breeds");
+  const apiUrl = await axios.get(
+    `https://api.thedogapi.com/v1/breeds?api_key=${apiKey}`
+  );
   const apiInfo = apiUrl.data.map((dog) => {
     let tempArray = [];
     if (dog.temperament) {
@@ -26,9 +30,7 @@ const getDogsApi = async () => {
       weight: weightArray ? weightArray : "weight doesnt exist",
       temperaments: tempArray ? tempArray : "temp doesnt exist",
       life_span: dog.life_span ? dog.life_span : "life_span doesnt exist",
-      image: dog.reference_image_id
-        ? dog.reference_image_id
-        : "image not found",
+      image: dogImage ? dogImage : "image not found",
     };
   });
   return apiInfo;
