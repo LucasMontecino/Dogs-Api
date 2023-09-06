@@ -6,20 +6,26 @@ import style from "./SearchBar.module.css";
 export default function SearchBar({ setCurrentPage }) {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
-  const [searchError, setSearchError] = useState(false);
 
   const handleInputChange = (e) => {
-    e.preventDefault();
     setName(e.target.value);
   };
 
+  function handleKeyUp(e) {
+    if (e.target.value && e.key === "Enter") {
+      performSearch();
+    }
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSearchError(false);
-    const result = dispatch(getDogsName(name));
-    if (result.length === 0) {
-      setSearchError(true);
+    if (name.length > 0) {
+      performSearch();
     }
+  };
+
+  const performSearch = () => {
+    dispatch(getDogsName(name));
     setCurrentPage(1);
     setName("");
   };
@@ -31,6 +37,7 @@ export default function SearchBar({ setCurrentPage }) {
         type="text"
         placeholder="Enter breed name..."
         onChange={(e) => handleInputChange(e)}
+        onKeyUp={handleKeyUp}
         value={name}
       />
       <button
@@ -40,7 +47,6 @@ export default function SearchBar({ setCurrentPage }) {
       >
         <i className="fa-solid fa-magnifying-glass"></i>
       </button>
-      {searchError && <p>No results found.</p>}
     </div>
   );
 }
