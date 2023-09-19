@@ -11,7 +11,7 @@ const cors = require("cors");
 
 server.name = "API";
 
-const apiRef = "https://deploy-iota-peach.vercel.app";
+const apiRef = "https://dogs-api-lilac.vercel.app";
 
 server.use(cors());
 server.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
