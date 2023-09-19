@@ -21,7 +21,7 @@ function rootReducer(state = initialState, action) {
         isLoading: false,
       };
 
-    case "GET_RECIPES_START":
+    case "GET_BREEDS_START":
       return {
         ...state,
         isLoading: true,

@@ -92,6 +92,6 @@ export function filterCreated(payload) {
 
 export function getRecipesStart() {
   return {
-    type: "GET_RECIPES_START",
+    type: "GET_BREEDS_START",
   };
 }
