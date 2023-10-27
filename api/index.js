@@ -18,13 +18,14 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // const server = require("./src/app.js");
+require("dotenv").config();
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
+const cors = require("cors");
 const routes = require("./src/routes/index.js");
 const { conn } = require("./src/db.js");
-require("dotenv").config();
 const { PORT } = process.env;
 const port = PORT || 3001;
 
@@ -38,7 +39,6 @@ conn.sync({ force: false }).then(() => {
 require("./src/db.js");
 
 const server = express();
-const cors = require("cors");
 
 server.name = "API";
 
