@@ -19,16 +19,21 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // const server = require("./src/app.js");
 require("dotenv").config();
-
-const { conn } = require("./src/db.js");
-const { PORT } = process.env;
-const port = PORT || 3001;
-
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const routes = require("./src/routes/index.js");
+const { conn } = require("./src/db.js");
+const { PORT } = process.env;
+const port = PORT || 3001;
+
+// Syncing all the models at once.
+conn.sync({ force: false }).then(() => {
+  server.listen(port, () => {
+    console.log(`%s listening at ${port}`); // eslint-disable-line no-console
+  });
+});
 
 require("./src/db.js");
 
@@ -64,13 +69,6 @@ server.use((err, req, res, next) => {
   const message = err.message || err;
   console.error(err);
   res.status(status).send(message);
-});
-
-// Syncing all the models at once.
-conn.sync({ force: false }).then(() => {
-  server.listen(port, () => {
-    console.log(`%s listening at ${port}`); // eslint-disable-line no-console
-  });
 });
 
 module.exports = server;
