@@ -33,13 +33,13 @@ const routes = require("./src/routes/index.js");
 require("./src/db.js");
 
 const server = express();
-const cors = require("cors");
+// const cors = require("cors");
 
 server.name = "API";
 
 const apiRef = "https://dogs-api-lilac.vercel.app";
 
-server.use(cors());
+// server.use(cors());
 server.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 server.use(bodyParser.json({ limit: "50mb" }));
 server.use(cookieParser());
