@@ -9,7 +9,7 @@ const DATABASE_LOCAL = `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_POR
 const sequelize = new Sequelize(`${DATABASE_LOCAL}`, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-  dialectModule: require("pg"),
+  // dialectModule: require("pg"),
 });
 
 const basename = path.basename(__filename);
