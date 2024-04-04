@@ -10,11 +10,11 @@ import {
   orderByWeight,
   getTemperaments,
   filterDogsByTemperaments,
-} from "../actions";
+} from "../../actions";
 import { Link } from "react-router-dom";
-import DogCard from "./DogCard";
-import Paginate from "./Paginate";
-import SearchBar from "./SearchBar";
+import DogCard from "../DogCard/DogCard";
+import Paginate from "../Paginate/Paginate";
+import SearchBar from "../SearchBar/SearchBar";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ export default function Home() {
   const [order, setOrder] = useState("");
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [dogsPerPage, setDogsPerPage] = useState(8);
+  const dogsPerPage = 8;
   const indexOfLastDog = currentPage * dogsPerPage;
   const indexOfFirstDog = indexOfLastDog - dogsPerPage;
   const currentDogs = allDogs.slice(indexOfFirstDog, indexOfLastDog);
@@ -50,13 +50,13 @@ export default function Home() {
     e.preventDefault();
     dispatch(orderByName(e.target.value));
     setCurrentPage(1);
-    setOrder(`Ordered ${e.target.value}`);
+    setOrder(`${e.target.value}`);
   };
 
   const handleWeight = (e) => {
     e.preventDefault();
     dispatch(orderByWeight(e.target.value));
-    setOrder(`Ordered ${e.target.value}`);
+    setOrder(`${e.target.value}`);
   };
 
   const handleFilterCreated = (e) => {
@@ -92,30 +92,24 @@ export default function Home() {
           <div className={style.logo}>Dogs PI</div>
         </Link>
 
-        {/* <button onClick={e => {handleClick(e)}} className={style.button_reload}>Reload All Dogs...</button> */}
-
         <div className={style.header_left}>
           <SearchBar setCurrentPage={setCurrentPage} />
 
           <div className={style.container_filters}>
-            <select onChange={(e) => handleSort(e)}>
-              <option disabled selected defaultValue>
-                Alphabetical order
-              </option>
+            <select onChange={(e) => handleSort(e)} value={order}>
+              <option value="">Alphabetical order</option>
               <option value="asc">Ascending</option>
               <option value="desc">Descending</option>
             </select>
 
-            <select onChange={(e) => handleWeight(e)}>
-              <option disabled selected defaultValue>
-                Filter by weigth
-              </option>
+            <select onChange={(e) => handleWeight(e)} value={order}>
+              <option value="">Filter by weigth</option>
               <option value="max_weight">Max</option>
               <option value="min_weight">Min</option>
             </select>
 
             <select onChange={(e) => handleFilterTemperaments(e)}>
-              <option disabled selected defaultValue>
+              <option disabled defaultValue>
                 Temperaments
               </option>
               <option value="All">All Temperaments</option>
@@ -127,7 +121,7 @@ export default function Home() {
             </select>
 
             <select onChange={(e) => handleFilterCreated(e)}>
-              <option disabled selected defaultValue>
+              <option disabled defaultValue>
                 Api/Created Filter
               </option>
               <option value="All">All</option>

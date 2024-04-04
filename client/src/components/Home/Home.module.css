@@ -18,7 +18,7 @@ button {
     height: 100%;
     width: 125px;
     margin-top: 5px;
-    background-image: url(../images/logo.png);
+    background-image: url("../../images/logo.png");
     background-color: rgba(204, 204, 204, 0.322);
     background-size: cover;
     background-position: top;

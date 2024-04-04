@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getDogsName } from "../actions";
+import { getDogsName } from "../../actions";
 import style from "./SearchBar.module.css";
 
 export default function SearchBar({ setCurrentPage }) {
