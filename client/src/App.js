@@ -6,7 +6,7 @@ import DogCreate from "./components/DogCreate";
 import DogDetail from "./components/DogDetail";
 import axios from "axios";
 
-axios.defaults.baseURL = "https://dogs-api-gkk4.onrender.com";
+axios.defaults.baseURL = "https://dogs-api-rest.vercel.app/";
 // axios.defaults.baseURL = "http://localhost:3001";
 
 function App() {
