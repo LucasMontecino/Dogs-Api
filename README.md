@@ -40,8 +40,8 @@ Discover, explore, and create dog breeds! A full-stack web application built wit
 ## 🚀 Installation
 ### 1️⃣ Clone the repository
 ```
- git clone https://github.com/your-username/henry-dogs.git
- cd henry-dogs
+ https://github.com/LucasMontecino/Dogs-Api.git
+ cd Dogs-Api
 ```
 ### 2️⃣ Install dependencies
 ```
