@@ -20,7 +20,7 @@ Discover, explore, and create dog breeds! A full-stack web application built wit
 
 ## ⚙️ Tech Stack
 ### Frontend
--⚛️ React
+- ⚛️ React
 
 - 🔄 Redux
 
