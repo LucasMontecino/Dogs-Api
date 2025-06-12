@@ -1,4 +1,4 @@
-# 🐶 Henry Dogs
+# 🐶 Dogs Api Encyclopedia
 Discover, explore, and create dog breeds! A full-stack web application built with React, Redux, Node.js, Express, and PostgreSQL.
 
 ## ✨ Features
