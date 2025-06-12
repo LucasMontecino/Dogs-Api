@@ -65,7 +65,8 @@ In the /api directory, create a .env file:
  DB_NAME=dogs
  API_KEY=your_dog_api_key
 ```
-⚠️ Note: Replace your_postgres_user and your_postgres_password with your PostgreSQL credentials.
+⚠️ Note: Replace your_postgres_user and your_postgres_password with your PostgreSQL credentials. 
+
 👉 Get a free API key at theDogAPI.com
 
 ### 4️⃣ Run the project
