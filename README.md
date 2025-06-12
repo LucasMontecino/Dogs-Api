@@ -67,7 +67,7 @@ In the /api directory, create a .env file:
 ```
 ⚠️ Note: Replace your_postgres_user and your_postgres_password with your PostgreSQL credentials. 
 
-👉 Get a free API key at theDogAPI.com
+👉 Get a free API key at <a href='https://thedogapi.com/' target='_blank' rel='noopener noreferrer'>theDogAPI.com<a/> 
 
 ### 4️⃣ Run the project
 ```
