@@ -34,5 +34,3 @@ conn.sync({ force: false }).then(() => {
     ); // eslint-disable-line no-console
   });
 });
-
-module.exports = server;
