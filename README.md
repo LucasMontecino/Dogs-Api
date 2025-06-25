@@ -62,7 +62,9 @@ In the /api directory, create a .env file:
  DB_USER=your_postgres_user
  DB_PASSWORD=your_postgres_password
  DB_HOST=localhost
+ DB_PORT=your_postgres_db_port
  DB_NAME=dogs
+ PORT=3001
  API_KEY=your_dog_api_key
 ```
 ⚠️ Note: Replace your_postgres_user and your_postgres_password with your PostgreSQL credentials. 
@@ -73,7 +75,7 @@ In the /api directory, create a .env file:
 ```
  // Run the backend
  cd api
- npm start
+ npm run dev
 ```
 
 ```
