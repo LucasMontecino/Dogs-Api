@@ -2,15 +2,7 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
-const {
-  DB_USER,
-  DB_PASSWORD,
-  DB_HOST,
-  DB_NAME,
-  DB_PORT,
-  DATABASE_URL,
-} = require('./utils/config');
-const DATABASE_LOCAL = `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`;
+const { DATABASE_URL } = require('./utils/config');
 
 const sequelize = new Sequelize(`${DATABASE_URL}`, {
   logging: false, // set to console.log to see the raw SQL queries
@@ -26,14 +18,10 @@ const modelDefiners = [];
 fs.readdirSync(path.join(__dirname, '/models'))
   .filter(
     (file) =>
-      file.indexOf('.') !== 0 &&
-      file !== basename &&
-      file.slice(-3) === '.js'
+      file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js'
   )
   .forEach((file) => {
-    modelDefiners.push(
-      require(path.join(__dirname, '/models', file))
-    );
+    modelDefiners.push(require(path.join(__dirname, '/models', file)));
   });
 
 // Injectamos la conexion (sequelize) a todos los modelos

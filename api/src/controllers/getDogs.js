@@ -26,21 +26,11 @@ const getDogsApi = async () => {
     return {
       id: dog.id ? dog.id : 'id doesnt exist',
       name: dog.name ? dog.name : 'name doesnt exist',
-      height: heightArray
-        ? heightArray
-        : 'height doesnt exist',
-      weight: weightArray
-        ? weightArray
-        : 'weight doesnt exist',
-      temperaments: tempArray
-        ? tempArray
-        : 'temp doesnt exist',
-      life_span: dog.life_span
-        ? dog.life_span
-        : 'life_span doesnt exist',
-      image: dog.image.url
-        ? dog.image.url
-        : 'image not found',
+      height: heightArray ? heightArray : 'height doesnt exist',
+      weight: weightArray ? weightArray : 'weight doesnt exist',
+      temperaments: tempArray ? tempArray : 'temp doesnt exist',
+      life_span: dog.life_span ? dog.life_span : 'life_span doesnt exist',
+      image: dog.image.url ? dog.image.url : 'image not found',
     };
   });
   return apiInfo;

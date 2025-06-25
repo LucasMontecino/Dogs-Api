@@ -1,8 +1,8 @@
-const express = require("express");
+const express = require('express');
 const dogsRoute = express.Router();
-const getDogs = require("../controllers/getDogs");
+const getDogs = require('../controllers/getDogs');
 
-dogsRoute.get("/", async (req, res) => {
+dogsRoute.get('/', async (req, res) => {
   let { name } = req.query;
   try {
     const allDogs = await getDogs();
@@ -12,7 +12,7 @@ dogsRoute.get("/", async (req, res) => {
       );
       dogName.length
         ? res.status(200).send(dogName)
-        : res.status(404).send("No dog with that name");
+        : res.status(404).send('No dog with that name');
     }
     if (allDogs.length && !name) {
       res.status(200).send(allDogs);
@@ -22,15 +22,15 @@ dogsRoute.get("/", async (req, res) => {
   }
 });
 
-dogsRoute.get("/:id", async (req, res) => {
+dogsRoute.get('/:id', async (req, res) => {
   let { id } = req.params;
   try {
     const allDogs = await getDogs();
     if (id && allDogs.length) {
-      const dogId = allDogs.find((dog) => dog.id == id);
+      const dogId = allDogs.find((dog) => dog.id === Number(id));
       dogId
         ? res.status(200).send(dogId)
-        : res.status(404).send("No dog with that id");
+        : res.status(404).send('No dog with that id');
     }
   } catch (error) {
     res.status(400).send(error.message);

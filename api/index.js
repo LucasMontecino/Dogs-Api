@@ -29,8 +29,6 @@ const logger = require('./src/utils/logger.js');
 // Syncing all the models at once.
 conn.sync({ force: false }).then(() => {
   server.listen(port, () => {
-    logger.info(
-      `Server listening at http://localhost:${port}`
-    ); // eslint-disable-line no-console
+    logger.info(`Server listening at http://localhost:${port}`);
   });
 });
