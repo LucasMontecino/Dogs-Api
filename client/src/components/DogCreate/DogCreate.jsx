@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { postDog, getTemperaments } from "../../actions";
-import { useDispatch, useSelector } from "react-redux";
-import style from "./DogCreate.module.css";
+import React, { useState, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { postDog, getTemperaments } from '../../actions';
+import { useDispatch, useSelector } from 'react-redux';
+import style from './DogCreate.module.css';
 
 function validate(input) {
   let errors = {};
   if (!input.name) {
-    errors.name = "Name is required, it should not contain numbers";
+    errors.name = 'Name is required, it should not contain numbers';
   }
   if (!input.min_height || !input.max_height) {
-    errors.height = "Height is required";
+    errors.height = 'Height is required';
   }
   if (!input.min_weight || !input.max_weight) {
-    errors.weight = "Weight is required";
+    errors.weight = 'Weight is required';
   }
   if (!input.life_span) {
-    errors.life_span = "Lifespan is required";
+    errors.life_span = 'Lifespan is required';
   }
 
   return errors;
@@ -32,13 +32,13 @@ export default function DogCreate() {
   const [errors, setErrors] = useState({});
 
   const [input, setInput] = useState({
-    name: "",
-    min_height: "",
-    max_height: "",
-    min_weight: "",
-    max_weight: "",
-    life_span: "",
-    image: "",
+    name: '',
+    min_height: '',
+    max_height: '',
+    min_weight: '',
+    max_weight: '',
+    life_span: '',
+    image: '',
     temperament: [],
   });
 
@@ -79,18 +79,18 @@ export default function DogCreate() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(postDog(input));
-    alert("New Dog created succesfully!");
+    alert('New Dog created succesfully!');
     setInput({
-      name: "",
-      min_height: "",
-      max_height: "",
-      min_weight: "",
-      max_weight: "",
-      life_span: "",
-      image: "",
+      name: '',
+      min_height: '',
+      max_height: '',
+      min_weight: '',
+      max_weight: '',
+      life_span: '',
+      image: '',
       temperament: [],
     });
-    history.push("/home");
+    history.push('/home');
   };
 
   const handleDelete = (el) => {

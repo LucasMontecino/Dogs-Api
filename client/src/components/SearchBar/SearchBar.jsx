@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { getDogsName } from "../../actions";
-import style from "./SearchBar.module.css";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { getDogsName } from '../../actions';
+import style from './SearchBar.module.css';
 
 export default function SearchBar({ setCurrentPage }) {
   const dispatch = useDispatch();
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
 
   const handleInputChange = (e) => {
     setName(e.target.value);
   };
 
   function handleKeyUp(e) {
-    if (e.target.value && e.key === "Enter") {
+    if (e.target.value && e.key === 'Enter') {
       performSearch();
     }
   }
@@ -27,7 +27,7 @@ export default function SearchBar({ setCurrentPage }) {
   const performSearch = () => {
     dispatch(getDogsName(name));
     setCurrentPage(1);
-    setName("");
+    setName('');
   };
 
   return (

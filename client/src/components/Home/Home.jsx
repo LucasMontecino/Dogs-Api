@@ -1,8 +1,8 @@
-import React from "react";
-import ReactLoading from "react-loading";
-import style from "./Home.module.css";
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from 'react';
+import ReactLoading from 'react-loading';
+import style from './Home.module.css';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   filterCreated,
   getDogs,
@@ -10,11 +10,11 @@ import {
   orderByWeight,
   getTemperaments,
   filterDogsByTemperaments,
-} from "../../actions";
-import { Link } from "react-router-dom";
-import DogCard from "../DogCard/DogCard";
-import Paginate from "../Paginate/Paginate";
-import SearchBar from "../SearchBar/SearchBar";
+} from '../../actions';
+import { Link } from 'react-router-dom';
+import DogCard from '../DogCard/DogCard';
+import Paginate from '../Paginate/Paginate';
+import SearchBar from '../SearchBar/SearchBar';
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ export default function Home() {
   const allTemperaments = useSelector((state) => state.temperaments);
   const isLoading = useSelector((state) => state.isLoading);
 
-  const [order, setOrder] = useState("");
+  const [order, setOrder] = useState('');
 
   const [currentPage, setCurrentPage] = useState(1);
   const dogsPerPage = 8;
@@ -74,10 +74,10 @@ export default function Home() {
     return (
       <div className={style.box_loading}>
         <ReactLoading
-          type={"spin"}
-          color={"#fff"}
-          height={"350px"}
-          width={"350px"}
+          type={'spin'}
+          color={'#fff'}
+          height={'350px'}
+          width={'350px'}
         />
         <p className={style.text_loading}>Loading...</p>
       </div>
@@ -148,7 +148,7 @@ export default function Home() {
             currentDogs.map((el) => {
               return (
                 <div className={style.container_card} key={el.id}>
-                  <Link to={"/home/" + el.id}>
+                  <Link to={'/home/' + el.id}>
                     <DogCard
                       name={el.name}
                       image={el.image}
@@ -174,7 +174,7 @@ export default function Home() {
         </div>
       </div>
       <footer className={style.footer}>
-        <p>Lucas Montecino &copy; 2022 - Todos los derechos reservados</p>
+        <p>&copy; {new Date().getFullYear()} Created by Lucas Montecino</p>
       </footer>
     </>
   );

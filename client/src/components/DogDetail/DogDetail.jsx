@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { getDogDetail } from "../../actions";
-import style from "./DogDetail.module.css";
-import ReactLoading from "react-loading";
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getDogDetail } from '../../actions';
+import style from './DogDetail.module.css';
+import ReactLoading from 'react-loading';
 
 export default function DogDetail(props) {
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ export default function DogDetail(props) {
   useEffect(() => {
     dispatch(getDogDetail(props.match.params.id));
     return () => {
-      dispatch(getDogDetail(""));
+      dispatch(getDogDetail(''));
     };
   }, [dispatch, props.match.params.id]);
 
@@ -22,10 +22,10 @@ export default function DogDetail(props) {
     return (
       <div className={style.box_loading}>
         <ReactLoading
-          type={"spin"}
-          color={"#fff"}
-          height={"350px"}
-          width={"350px"}
+          type={'spin'}
+          color={'#fff'}
+          height={'350px'}
+          width={'350px'}
         />
         <p className={style.text_loading}>Loading...</p>
       </div>
@@ -54,7 +54,7 @@ export default function DogDetail(props) {
               <h3>{`Weight: ${details.weight && details.weight[0]} - ${
                 details.weight && details.weight[1]
               } kg.`}</h3>
-              <h3>{"Life Span: " + details.life_span}</h3>
+              <h3>{'Life Span: ' + details.life_span}</h3>
               <div>
                 <h3>Temperaments:</h3>
                 <ul className={style.list_container}>

@@ -1,13 +1,14 @@
-import axios from "axios";
+import dogService from '../services/dogs';
+import temperamentService from '../services/temperaments';
 
 export function getDogs() {
   return async function (dispatch) {
     dispatch(getRecipesStart());
     try {
-      var json = await axios.get("/dogs");
+      const dogs = await dogService.getAll();
       return dispatch({
-        type: "GET_DOGS",
-        payload: json.data,
+        type: 'GET_DOGS',
+        payload: dogs,
       });
     } catch (error) {
       console.log({ message: error.message });
@@ -19,10 +20,10 @@ export function getDogsName(name) {
   return async function (dispatch) {
     dispatch(getRecipesStart());
     try {
-      var json = await axios.get("/dogs?name=" + name);
+      const dog = await dogService.getResourceByQuery(name);
       return dispatch({
-        type: "GET_DOGS_NAME",
-        payload: json.data,
+        type: 'GET_DOGS_NAME',
+        payload: dog,
       });
     } catch (error) {
       console.log(error);
@@ -32,31 +33,31 @@ export function getDogsName(name) {
 
 export function getTemperaments() {
   return async function (dispatch) {
-    var json = await axios.get("/temperaments");
+    const temperaments = await temperamentService.getAll();
     return dispatch({
-      type: "GET_TEMPERAMENTS",
-      payload: json.data,
+      type: 'GET_TEMPERAMENTS',
+      payload: temperaments,
     });
   };
 }
 
 export function postDog(payload) {
-  return async function (dispatch) {
-    const response = await axios.post("/dog", payload);
-    return response;
+  return async function () {
+    const newDog = await dogService.create(payload);
+    return newDog;
   };
 }
 
 export function orderByName(payload) {
   return {
-    type: "ORDER_BY_NAME",
+    type: 'ORDER_BY_NAME',
     payload,
   };
 }
 
 export function orderByWeight(payload) {
   return {
-    type: "ORDER_BY_WEIGHT",
+    type: 'ORDER_BY_WEIGHT',
     payload,
   };
 }
@@ -65,10 +66,10 @@ export function getDogDetail(id) {
   return async function (dispatch) {
     dispatch(getRecipesStart());
     try {
-      let json = await axios.get(`/dogs/${id}`);
+      const dog = await dogService.getResourceByParams(id);
       return dispatch({
-        type: "GET_DOG_DETAIL",
-        payload: json.data,
+        type: 'GET_DOG_DETAIL',
+        payload: dog,
       });
     } catch (error) {
       console.log(error);
@@ -78,20 +79,20 @@ export function getDogDetail(id) {
 
 export function filterDogsByTemperaments(payload) {
   return {
-    type: "GET_FILTER_BY_TEMPERAMENTS",
+    type: 'GET_FILTER_BY_TEMPERAMENTS',
     payload,
   };
 }
 
 export function filterCreated(payload) {
   return {
-    type: "FILTER_CREATED",
+    type: 'FILTER_CREATED',
     payload,
   };
 }
 
 export function getRecipesStart() {
   return {
-    type: "GET_BREEDS_START",
+    type: 'GET_BREEDS_START',
   };
 }
