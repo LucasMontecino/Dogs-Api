@@ -119,43 +119,6 @@ button {
   margin: 0 5% 0 5%;
 }
 
-.container_cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 5% 0.9%;
-  justify-items: center;
-  padding: 2rem 0 2rem 0;
-}
-
-.container_card {
-  background: rgba(204, 204, 204, 0.35);
-  border: 1px solid #ccc;
-  width: 92.5%;
-  border-radius: 15px;
-  overflow: hidden;
-  position: relative;
-  padding: 10px;
-  transition: all 0.4s;
-}
-
-.container_card:hover {
-  cursor: pointer;
-  background: #ccc;
-  opacity: 0.6;
-}
-
-.paginate {
-  margin-left: 0;
-  padding-left: 0;
-}
-
-.footer {
-  background: #1e1f22;
-  display: flex;
-  justify-content: center;
-  padding: 16px 0;
-}
-
 .box_loading {
   display: flex;
   flex-direction: column;

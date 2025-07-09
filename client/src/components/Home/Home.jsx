@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactLoading from 'react-loading';
 import style from './Home.module.css';
 import { useState, useEffect } from 'react';
@@ -12,9 +11,10 @@ import {
   filterDogsByTemperaments,
 } from '../../actions';
 import { Link } from 'react-router-dom';
-import DogCard from '../DogCard/DogCard';
 import Paginate from '../Paginate/Paginate';
 import SearchBar from '../SearchBar/SearchBar';
+import Dogs from '../Dogs/Dogs';
+import Footer from '../Footer/Footer';
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -130,8 +130,7 @@ export default function Home() {
             </select>
           </div>
         </div>
-        {/* <div className={style.header_right}>
-        </div> */}
+
         <div className={style.header_right}>
           <button className={style.create_dog} onClick={handleButton}>
             Reset Filters
@@ -143,39 +142,14 @@ export default function Home() {
       </header>
       <hr />
       <div className={style.main_container}>
-        <div className={style.container_cards}>
-          {currentDogs &&
-            currentDogs.map((el) => {
-              return (
-                <div className={style.container_card} key={el.id}>
-                  <Link to={'/home/' + el.id}>
-                    <DogCard
-                      name={el.name}
-                      image={el.image}
-                      temperament={
-                        el.temperaments[0].name
-                          ? el.temperaments.map((el) => el.name)
-                          : el.temperaments
-                      }
-                      weight={el.weight}
-                      key={el.id}
-                    />
-                  </Link>
-                </div>
-              );
-            })}
-        </div>
-        <div className={style.paginate}>
-          <Paginate
-            dogsPerPage={dogsPerPage}
-            allDogs={allDogs.length}
-            paginate={paginate}
-          />
-        </div>
+        <Dogs dogs={currentDogs} />
+        <Paginate
+          dogsPerPage={dogsPerPage}
+          allDogs={allDogs.length}
+          paginate={paginate}
+        />
       </div>
-      <footer className={style.footer}>
-        <p>&copy; {new Date().getFullYear()} Created by Lucas Montecino</p>
-      </footer>
+      <Footer />
     </>
   );
 }

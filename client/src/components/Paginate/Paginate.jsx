@@ -8,19 +8,21 @@ export default function Paginate({ dogsPerPage, allDogs, paginate }) {
   }
 
   return (
-    <nav className={style.navbar}>
-      <ul className={style.ul_container}>
-        {pageNumbers &&
-          pageNumbers.map((number) => (
-            <li
-              className={style.li_container}
-              onClick={() => paginate(number)}
-              key={number}
-            >
-              <button type="button">{number}</button>
-            </li>
-          ))}
-      </ul>
-    </nav>
+    <div className={style.paginate}>
+      <nav className={style.navbar}>
+        <ul className={style.ul_container}>
+          {pageNumbers &&
+            pageNumbers.map((number) => (
+              <li
+                className={style.li_container}
+                onClick={() => paginate(number)}
+                key={number}
+              >
+                <button type="button">{number}</button>
+              </li>
+            ))}
+        </ul>
+      </nav>
+    </div>
   );
 }
