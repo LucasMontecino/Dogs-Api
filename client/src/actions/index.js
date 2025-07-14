@@ -3,7 +3,7 @@ import temperamentService from '../services/temperaments';
 
 export function getDogs() {
   return async function (dispatch) {
-    dispatch(getRecipesStart());
+    dispatch(getBreedsStart());
     try {
       const dogs = await dogService.getAll();
       return dispatch({
@@ -18,7 +18,7 @@ export function getDogs() {
 
 export function getDogsName(name) {
   return async function (dispatch) {
-    dispatch(getRecipesStart());
+    dispatch(getBreedsStart());
     try {
       const dog = await dogService.getResourceByQuery(name);
       return dispatch({
@@ -64,13 +64,20 @@ export function orderByWeight(payload) {
 
 export function getDogDetail(id) {
   return async function (dispatch) {
-    dispatch(getRecipesStart());
+    dispatch(getBreedsStart());
     try {
-      const dog = await dogService.getResourceByParams(id);
-      return dispatch({
-        type: 'GET_DOG_DETAIL',
-        payload: dog,
-      });
+      if (id) {
+        const dog = await dogService.getResourceByParams(id);
+        return dispatch({
+          type: 'GET_DOG_DETAIL',
+          payload: dog,
+        });
+      } else {
+        return dispatch({
+          type: 'GET_DOG_DETAIL',
+          payload: null,
+        });
+      }
     } catch (error) {
       console.log(error);
     }
@@ -91,7 +98,7 @@ export function filterCreated(payload) {
   };
 }
 
-export function getRecipesStart() {
+export function getBreedsStart() {
   return {
     type: 'GET_BREEDS_START',
   };

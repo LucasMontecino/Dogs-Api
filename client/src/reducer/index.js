@@ -1,6 +1,6 @@
 const initialState = {
   dogs: [],
-  detail: [],
+  detail: null,
   allDogs: [],
   temperaments: [],
   isLoading: false,

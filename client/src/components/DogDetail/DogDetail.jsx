@@ -11,7 +11,7 @@ export default function DogDetail(props) {
   useEffect(() => {
     dispatch(getDogDetail(props.match.params.id));
     return () => {
-      dispatch(getDogDetail(''));
+      dispatch(getDogDetail(null));
     };
   }, [dispatch, props.match.params.id]);
 
@@ -63,7 +63,7 @@ export default function DogDetail(props) {
                         <li key={el.name}>{el.name}</li>
                       ))
                     : details.temperaments &&
-                      details.temperaments.map((el) => <li>{el}</li>)}
+                      details.temperaments.map((el) => <li key={el}>{el}</li>)}
                 </ul>
               </div>
             </div>
@@ -73,21 +73,3 @@ export default function DogDetail(props) {
     </div>
   );
 }
-
-// {/* <div>
-// <img src={details.image} alt={`imagen de ${details.name}`}/>
-// </div>
-
-// <div>
-// <h1>{details.name}</h1>
-// <h3>{`Height: ${details.height && details.height[0]} - ${details.height && details.height[1]} cm.`}</h3>
-// <h3>{`Weight: ${details.weight && details.weight[0]} - ${details.weight && details.weight[1]} kg.`}</h3>
-// <h3>{`Lifespan: ${details.life_span}`}</h3>
-// <div>
-//     <h3>Temperaments</h3>
-//     <p>{details.temperaments}</p>
-//     {/* <ul>
-//         {temperamentDog.map(t => <li key={t}>{t}</li>)}
-//     </ul> */}
-// </div>
-// </div> */}
