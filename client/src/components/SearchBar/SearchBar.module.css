@@ -1,11 +1,9 @@
 .searchbar_container {
   height: 35.71px;
-  width: 100%;
 }
 
 .searchbar {
   height: 35.71px;
-  width: 50%;
   font-size: 1.3rem;
   padding-left: 10px;
   border: none;
@@ -18,8 +16,15 @@
   border-radius: 0;
   height: 35.71px;
   font-size: 1.3rem;
-  width: 4rem;
+  padding: 0 12px;
   background-color: antiquewhite;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
+}
+
+@media (min-width: 1064px) {
+  .searchbar_container {
+    order: 3;
+    flex-grow: 1;
+  }
 }

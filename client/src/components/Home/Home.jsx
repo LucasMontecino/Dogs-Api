@@ -15,6 +15,7 @@ import Paginate from '../Paginate/Paginate';
 import SearchBar from '../SearchBar/SearchBar';
 import Dogs from '../Dogs/Dogs';
 import Footer from '../Footer/Footer';
+import logoImg from '../../images/logo.png';
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -22,6 +23,8 @@ export default function Home() {
   const allDogs = useSelector((state) => state.dogs);
   const allTemperaments = useSelector((state) => state.temperaments);
   const isLoading = useSelector((state) => state.isLoading);
+
+  const [toggle, setToggle] = useState(false);
 
   const [order, setOrder] = useState('');
 
@@ -87,60 +90,71 @@ export default function Home() {
   return (
     <>
       <header className={style.header}>
-        <div className={style.header_container_left}></div>
-        <Link to="/">
-          <div className={style.logo}>Dogs PI</div>
-        </Link>
-
-        <div className={style.header_left}>
-          <SearchBar setCurrentPage={setCurrentPage} />
-
-          <div className={style.container_filters}>
-            <select onChange={(e) => handleSort(e)} value={order}>
-              <option value="">Alphabetical order</option>
-              <option value="asc">Ascending</option>
-              <option value="desc">Descending</option>
-            </select>
-
-            <select onChange={(e) => handleWeight(e)} value={order}>
-              <option value="">Filter by weigth</option>
-              <option value="max_weight">Max</option>
-              <option value="min_weight">Min</option>
-            </select>
-
-            <select onChange={(e) => handleFilterTemperaments(e)}>
-              <option disabled defaultValue>
-                Temperaments
-              </option>
-              <option value="All">All Temperaments</option>
-              {allTemperaments?.map((temp) => (
-                <option value={temp.name} key={temp.id}>
-                  {temp.name}
-                </option>
-              ))}
-            </select>
-
-            <select onChange={(e) => handleFilterCreated(e)}>
-              <option disabled defaultValue>
-                Api/Created Filter
-              </option>
-              <option value="All">All</option>
-              <option value="api">Api</option>
-              <option value="created">Created</option>
-            </select>
-          </div>
-        </div>
-
-        <div className={style.header_right}>
-          <button className={style.create_dog} onClick={handleButton}>
-            Reset Filters
+        <div className={`${style.container} ${style.row}`}>
+          <button
+            className={style.navToggle}
+            onClick={() => setToggle((prev) => !prev)}
+          >
+            <span className={style.hamburger}></span>
           </button>
-          <Link to="/dog">
-            <button className={style.create_dog}>Create New Dog</button>
+          <Link to="/" className={style.logo}>
+            <img src={logoImg} alt="dogs-img" />{' '}
           </Link>
+
+          <nav
+            className={`${style.nav} ${toggle ? style.nav__visibility : ''}`}
+          >
+            <SearchBar setCurrentPage={setCurrentPage} />
+
+            <div className={style.column}>
+              <div className={style.select__child}>
+                <select onChange={(e) => handleSort(e)} value={order}>
+                  <option value="">Alphabetical order</option>
+                  <option value="asc">Ascending</option>
+                  <option value="desc">Descending</option>
+                </select>
+
+                <select onChange={(e) => handleWeight(e)} value={order}>
+                  <option value="">Filter by weigth</option>
+                  <option value="max_weight">Max</option>
+                  <option value="min_weight">Min</option>
+                </select>
+              </div>
+
+              <div className={style.select__child}>
+                <select onChange={(e) => handleFilterTemperaments(e)}>
+                  <option disabled defaultValue>
+                    Temperaments
+                  </option>
+                  <option value="All">All Temperaments</option>
+                  {allTemperaments?.map((temp) => (
+                    <option value={temp.name} key={temp.id}>
+                      {temp.name}
+                    </option>
+                  ))}
+                </select>
+
+                <select onChange={(e) => handleFilterCreated(e)}>
+                  <option disabled defaultValue>
+                    Api/Created Filter
+                  </option>
+                  <option value="All">All</option>
+                  <option value="api">Api</option>
+                  <option value="created">Created</option>
+                </select>
+              </div>
+            </div>
+
+            <button className={style.create_dog} onClick={handleButton}>
+              Reset Filters
+            </button>
+            <Link to="/dog">
+              <button className={style.create_dog}>Create New Dog</button>
+            </Link>
+          </nav>
         </div>
       </header>
-      <hr />
+
       <div className={style.main_container}>
         <Dogs dogs={currentDogs} />
         <Paginate
